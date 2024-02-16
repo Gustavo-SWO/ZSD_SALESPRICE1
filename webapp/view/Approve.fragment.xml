@@ -1,0 +1,23 @@
+<!--
+
+    Copyright (C) 2009-2021 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:FragmentDefinition id="approveFragment" xmlns:core="sap.ui.core" xmlns:smartfield="sap.ui.comp.smartfield" xmlns="sap.m">
+	<Dialog id="approveDialog" title="{i18n>approveTitle}" resizable="true" draggable="true" contentWidth="400px">
+		<MessageStrip id="approveMessageStrip" text="{busy>/sApproveInfo}" type="Information" showIcon="true"
+			class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop sapUiTinyMarginBottom"/>
+		<VBox id="approveVbox" class="sapUiSmallMargin">
+			<Label id="desLabel" text="{i18n>description}:" required="true" labelFor="descriptionInput" tooltip="{i18n>approveRequestDescription}"/>
+			<Input id="descriptionInput" change="onInputChange" class="sapUiSmallMarginBottom"/>
+			<Label id="reasonLabel" text="{i18n>reason}:" labelFor="reasonSFI" tooltip="{i18n>createPriceReason}"/>
+			<smartfield:SmartField id="reasonSFI" value="{ConditionChangeReason}" entitySet="{C_SlsPricingConditionRecordTP}"
+				class="sapUiSmallMarginBottom"/>
+		</VBox>
+		<buttons id="approveButtons">
+			<Button id="submitRequest" press="onSubmitRequest" text="{i18n>submit}" type="Emphasized" tooltip="{i18n>submit}"/>
+			<Button id="skip" press="onCloseApprove" text="{i18n>skip}" tooltip="{i18n>skip}" visible="false"/>
+			<Button id="cancelRequest" press="onCloseApprove" text="{i18n>cancel}" tooltip="{i18n>cancel}" visible="false"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,82 @@
+<!--
+
+    Copyright (C) 2009-2021 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<mvc:View controllerName="zzcus.sd.salesprices.manage.controller.History" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core"
+	xmlns:smartFilterBar="sap.ui.comp.smartfilterbar" xmlns:smartTable="sap.ui.comp.smarttable" xmlns:f="sap.f" id="historyView"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:sv="sap.ui.comp.smartvariants"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	<f:DynamicPage id="dynamicHistoryPage" busy="{busy>/isBusy}" showFooter="false" toggleHeaderOnTitleClick="true"
+		preserveHeaderStateOnScroll="false" fitContent="true">
+		<f:title>
+			<f:DynamicPageTitle id="dynamicalHistoryPageTitle">
+				<f:heading>
+					<sv:SmartVariantManagement id="historyVariantId" persistencyKey="historyVariantKey" showShare="true" showExecuteOnSelection="true"
+						entitySet="C_SlsCndnRecdImprtHist"/>
+				</f:heading>
+				<f:snappedContent>
+					<Text id="historyStatusText" wrapping="false"/>
+				</f:snappedContent>
+			</f:DynamicPageTitle>
+		</f:title>
+		<f:header>
+			<f:DynamicPageHeader id="dynamicalPageHeader" pinnable="true">
+				<f:content>
+					<smartFilterBar:SmartFilterBar smartVariant="historyVariantId" id="smartFilterBarHistory" entitySet="C_SlsCndnRecdImprtHist"
+						persistencyKey="SmartFilterHistoryPKey" enableBasicSearch="true" considerSelectionVariants="true" search="onSearch"
+						filterChange="onFilterChange" useToolbar="false" assignedFiltersChanged="onAssignedFiltersChanged" initialise="onInitSmartFilterBar">
+						<smartFilterBar:customData>
+							<core:CustomData id="customDataOfFilterBar" key="dateFormatSettings" value='\{"UTC":true\}'/>
+						</smartFilterBar:customData>
+						<smartFilterBar:controlConfiguration>
+							<smartFilterBar:ControlConfiguration id="importedOn" index="2" key="CndnRecdImportDate"
+								conditionType="sap.ui.comp.config.condition.DateRangeType" visibleInAdvancedArea="true"/>
+							<smartFilterBar:ControlConfiguration id="status" index="1" key="CndnRecdImportStatusText" controlType="dropDownList" filterType="multiple"
+								preventInitialDataFetchInValueHelpDialog="false" visibleInAdvancedArea="true" hasValueHelpDialog="true"/>
+						</smartFilterBar:controlConfiguration>
+					</smartFilterBar:SmartFilterBar>
+				</f:content>
+			</f:DynamicPageHeader>
+		</f:header>
+		<f:content>
+			<smartTable:SmartTable id="lineItemsHistoryTable" entitySet="C_SlsCndnRecdImprtHist" smartVariant="historyVariantId" useExportToExcel="true"
+				smartFilterId="smartFilterBarHistory" tableType="ResponsiveTable" useVariantManagement="true" useTablePersonalisation="true"
+				showRowCount="true" persistencyKey="SmartTableHistoryPKey" header="{i18n>historyTableHeader}" enableAutoBinding="false" demandPopin="true"
+				requestAtLeastFields="CndnRecdImportStatus,ConditionRecordUUID,CndnRecdImportName" class="sapUiResponsiveContentPadding"
+				app:p13nDialogSettings="{filter:{visible:false}}" ignoreFromPersonalisation="CndnRecdImportDate,CndnRecdImportName"
+				initialise="onInitSmartTable">
+				<smartTable:customToolbar>
+					<OverflowToolbar id="toolBar" design="Transparent">
+						<ToolbarSpacer id="toolbarspace"/>
+						<Button id="failedButton" text="{i18n>historyButtonText}" press="onDownloadFailed" tooltip="{i18n>historyButtonText}" enabled="false"/>
+						<Button id="successedButton" text="{i18n>viewDataButtonText}" press="onDownloadSuccessed" tooltip="{i18n>viewDataButtonText}"
+							enabled="false"/>
+					</OverflowToolbar>
+				</smartTable:customToolbar>
+				<Table id="innerHistoryTable" growing="true" selectionChange="onSelectionChange" updateFinished="onUpdateFinished">
+					<columns>
+						<Column id="statusColumn" hAlign="Left">
+							<customData>
+								<core:CustomData id="customerData" key="p13nData"
+									value='\{"columnKey": "Import Name","columnIndex": 0,"leadingProperty":"CndnRecdImportName","sortProperty":"CndnRecdImportName", "filterProperty":"CndnRecdImportName"}'/>
+							</customData>
+							<Text id="actionColumnText" text="{i18n>historyColumnText}" tooltip="{i18n>historyColumnText}"/>
+						</Column>
+					</columns>
+					<items>
+						<ColumnListItem id="historyColumnListItem">
+							<cells>
+								<HBox id="statusHBox">
+									<Text id="statusText" text="{CndnRecdImportName}" class="sapUiTinyMarginEnd"/>
+									<core:Icon id="statusIcon" color="Default" press="onIssueIconPressed" src="sap-icon://information"
+										visible="{=(${CndnRecdImportStatus}==='4') ? true : false}"/>
+								</HBox>
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+			</smartTable:SmartTable>
+		</f:content>
+	</f:DynamicPage>
+</mvc:View>

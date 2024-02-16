@@ -1,0 +1,64 @@
+<!--
+
+    Copyright (C) 2009-2021 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+	<edmx:Reference Uri="https://wiki.scn.sap.com/wiki/download/attachments/448470974/Common.xml?api=v2">
+		<edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="/sap/opu/odata/sap/SD_PRICING_CONDITIONRECORD_SRV/$metadata">
+		<edmx:Include Alias="SD_PRICING_CONDITIONRECORD_SRV" Namespace="SD_PRICING_CONDITIONRECORD_SRV"/>
+	</edmx:Reference>
+	<edmx:DataServices>
+		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm"
+			Namespace="zzcus.sd.salesprices.manage.annotations.annotation1.SD_PRICING_CONDITIONRECORD_SRV">
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.SD_PRICING_CONDITIONRECORD_SRV_Entities">
+				 <Annotation Term="SAP__CodeList.CurrencyCodes">
+					<Record>
+						<PropertyValue Property="Url"/>
+						<PropertyValue Property="CollectionPath" String="SAP__Currencies"/>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ConditionTable">
+				<Annotation Term="Common.ValueList">
+					<Record Type="Common.ValueListType">
+						<PropertyValue Property="Label" String="Key Combination for Pricing in Sales"/>
+						<PropertyValue Property="CollectionPath" String="I_SlsPrcgKeyCombination"/>
+						<PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut">
+									<PropertyValue Property="LocalDataProperty" PropertyPath="ConditionTable"/>
+									<PropertyValue Property="ValueListProperty" String="ConditionTable"/>
+								</Record>
+								<Record Type="Common.ValueListParameterDisplayOnly">
+									<PropertyValue Property="ValueListProperty" String="ConditionType"/>
+								</Record>
+								<Record Type="Common.ValueListParameterIn">
+									<PropertyValue Property="LocalDataProperty" PropertyPath="ConditionType"/>
+									<PropertyValue Property="ValueListProperty" String="ConditionType"/>
+								</Record>
+								<Record Type="Common.ValueListParameterOut">
+									<PropertyValue Property="LocalDataProperty" PropertyPath="AccessNumberOfAccessSequence"/>
+									<PropertyValue Property="ValueListProperty" String="AccessNumberOfAccessSequence"/>
+								</Record>
+								<Record Type="Common.ValueListParameterDisplayOnly">
+									<PropertyValue Property="ValueListProperty" String="PrcgKeyCombinationText"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ConditionRateValueUnit">
+				<Annotation Term="Common.Label" String="Condition Unit"/>
+			</Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.I_CurrencyStdVHType/Currency">
+				<Annotation Term="Common.QuickInfo" String="Currency or Percentage"/>
+				<Annotation Term="Common.Label" String="Currency or Percentage"/>
+			</Annotations>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

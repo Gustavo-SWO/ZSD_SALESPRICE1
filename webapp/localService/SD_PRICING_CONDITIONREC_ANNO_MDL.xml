@@ -1,0 +1,719 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+    Copyright (C) 2009-2021 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+	<edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value"><edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/></edmx:Reference>
+	<edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='LOCAL')/$value"><edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/></edmx:Reference>
+	<edmx:Reference
+		Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='LOCAL')/$value"><edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/></edmx:Reference>
+	<edmx:Reference
+		Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='LOCAL')/$value"><edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/></edmx:Reference>
+	<edmx:Reference
+		Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='LOCAL')/$value"><edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/></edmx:Reference>
+	<edmx:Reference
+		Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='LOCAL')/$value"><edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/></edmx:Reference>
+	<edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_HTML5',Version='0001',SAP__Origin='LOCAL')/$value"><edmx:Include Namespace="com.sap.vocabularies.HTML5.v1" Alias="HTML5"/></edmx:Reference>
+	<edmx:Reference
+		Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='LOCAL')/$value"><edmx:Include Namespace="Org.OData.Capabilities.V1"/></edmx:Reference>
+	<edmx:Reference
+		Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='LOCAL')/$value"><edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/></edmx:Reference>
+	<edmx:Reference Uri="../../../sap/sd_pricing_conditionrecord_srv/$metadata"><edmx:Include Namespace="SD_PRICING_CONDITIONRECORD_SRV" Alias="SAP"/></edmx:Reference>
+	<edmx:DataServices>
+		<Schema Namespace="sd_pricing_conditionrec_anno_mdl.v1" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_CountyCodeTempValueHelpType/County_Text"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_CustomerProjectVHType/EmploymentInternalID"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_CustomerReturnItemOPgType/RootBatchProduct"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_CustomerReturnItemOPgType/BatchBySupplier"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_CustomerReturnItemOPgType/IsBatchManagementRequired"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_CustomerReturnItemOPgType/UnitOfMeasureDimension"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_CustomerReturnItemOPgType/RootBatchPlant"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_CustomerReturnItemOPgType/BillOfMaterial"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_CustomerReturnItemOPgType/BillingRelevanceCode"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_CustomerReturnItemOPgType/RetMatlInspResultCode"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_CustomerReturnItemOPgType/BillOfMaterialItemUUID"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_CustomerReturnItemOPgType/SupplierAddressID"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_CustomerReturnItemOPgType/ItemDeliveryAddressID"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_CustomerReturnItemOPgType">
+				<Annotation Term="UI.PresentationVariant">
+					<Record>
+						<PropertyValue Property="SortOrder">
+							<Collection>
+								<Record Type="Common.SortOrderType"><PropertyValue Property="Property" PropertyPath="CustomerReturnItem"/><PropertyValue Property="Descending" Bool="false"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation><Annotation Term="Common.SemanticObject" String="CustomerReturn"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_CustomerReturnSupplierVHType">
+				<Annotation Term="UI.LineItem">
+					<Collection>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Supplier"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="CompanyCode"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="SupplierName"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Country"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="CityName"/></Record>
+					</Collection>
+				</Annotation>
+				<Annotation Term="UI.SelectionFields">
+					<Collection>
+						<PropertyPath>Supplier</PropertyPath>
+						<PropertyPath>CompanyCode</PropertyPath>
+						<PropertyPath>SupplierName</PropertyPath>
+						<PropertyPath>Country</PropertyPath>
+						<PropertyPath>CityName</PropertyPath>
+					</Collection>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_PurOrdIntrastatCmmdtyCodeVHType/TrdClassfctnNmbrSchmCntnt"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_PurOrdIntrastatCmmdtyCodeVHType/ValidityStartDate"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_PurOrdIntrastatCmmdtyCodeVHType/TrdClassfctnNmbrSchm"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsCndnRecdImprtHistType/CndnRecdImportDateTime"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsCndnRecdImprtHistType/ConditionRecordUUID"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsCndnRecdImprtHistType/CreatedByUser"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsCndnRecdImprtHistType/CreatedByUserName"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsCndnRecdImprtHistType/CndnRecdImportStatus"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsCndnRecdImprtHistType/ApplicationLogHandle"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsCndnRecdImprtHistType/Criticality"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsCndnRecdImprtHistType">
+				<Annotation Term="UI.LineItem">
+					<Collection>
+						<Record Type="UI.DataField"><PropertyValue Property="Criticality" Path="Criticality"/><PropertyValue Property="Value" Path="CndnRecdImportStatusText"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="CndnRecdImportDateTime"/></Record>
+					</Collection>
+				</Annotation>
+			</Annotations><Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ConditionRecord"/>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ConditionSequentialNumber"><Annotation Term="UI.HiddenFilter"/></Annotations><Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ConditionValidityEndDate"/><Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ValidOnDate"/><Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ConditionValidityStartDate"/>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/AccessNumberOfAccessSequence"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ConditionApplication"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ConditionTypeName"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/CreatedByUser"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/CreationDate"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ConditionTextID"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/PricingScaleType"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/PricingScaleBasis"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ConditionScaleQuantity"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ConditionScaleQuantityUnit"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ConditionScaleAmount"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ConditionScaleAmountCurrency"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ConditionCalculationType"><Annotation Term="UI.HiddenFilter"/>
+				<Annotation Term="Common.Text" Path="ConditionCalculationTypeName"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ConditionCalculationTypeName"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ConditionRateValue"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ConditionRateValueUnit"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ConditionQuantity"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ConditionQuantityUnit"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ConditionToBaseQtyNmrtr"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ConditionToBaseQtyDnmntr"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/BaseUnit"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ConditionLowerLimit"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ConditionUpperLimit"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ConditionAlternativeCurrency"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ConditionExclusion"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ConditionIsDeleted"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/AdditionalValueDays"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/FixedValueDate"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/PaymentTerms"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/PaymentTermsName"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/CndnMaxNumberOfSalesOrders"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/MinimumConditionBasisValue"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/MaximumConditionBasisValue"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/MaximumConditionAmount"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/IncrementalScale"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/PricingScaleLine"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/DepartureCountryName"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/SalesDocumentItemText"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/BillableControlName"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/IndustryKeyText"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ProductHierarchyNodeText"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/CityCodeName"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/CountyName"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/TechnicalObjectTypeDesc"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/EquipmentName"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/IncotermsClassificationName"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/AccountTaxType"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/CustomerGroupName"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/CustomerPriceGroupName"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/MaterialPricingGroupName"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/SoldToPartyName"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/CustomerName"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/PayerPartyName"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ShipToPartyName"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/SupplierName"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/DestinationCountryName"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/MaterialGroupName"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ReturnsRefundExtentDesc"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/AdditionalMaterialGroup1Name"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/AdditionalMaterialGroup2Name"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/AdditionalMaterialGroup3Name"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/AdditionalMaterialGroup4Name"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/AdditionalMaterialGroup5Name"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/PersonFullName"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/PriceListTypeName"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/RegionName"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/EngmtProjectServiceOrgName"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/DivisionName"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/CommodityCodeText"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ConsumptionTaxCtrlCode"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/BRSpcfcTaxBasePercentageCode"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/BRSpcfcTxGrpDynTaxExceptions"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/CustomerTaxClassification1"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/CustomerTaxClassification2"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/CustomerTaxClassification3"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/CustomerTaxClassification4"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ProductTaxClassification1"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ProductTaxClassification2"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ProductTaxClassification3"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ProductTaxClassification4"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/TaxJurisdiction"><Annotation Term="UI.HiddenFilter"/>
+				<Annotation Term="Common.Text" Path="TaxJurisdictionName"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/TaxJurisdictionName"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/BRSpcfcTaxDepartureRegion"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/BRSpcfcTaxDestinationRegion"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/MainItmMatlPricingGroupName"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/MainItemPricingRefMaterialName"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/VariantConditionName"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/SalesOfficeName"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/SalesGroupName"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/SlsOrderSalesOrganizationName"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/OrderQuantityUnitName"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/SalesOrganizationName"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/DistributionChannelName"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/MaterialName"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/TransactionCurrencyName"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/WBSDescription"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/WorkPackageName"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/PlantName"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/PlantRegionName"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/WorkItemName"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/TaxCode"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/EngagementProjectName"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/BR_NFDocumentType"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/BRSpcfcFreeDefinedField1"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/BRSpcfcFreeDefinedField2"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/BRSpcfcFreeDefinedField3"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/TxRlvnceClassfctnForArgentina"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/BR_TaxCode"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/LocalSalesTaxApplicabilityCode"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/TimeSheetOvertimeCategoryText"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/SDDocumentCategoryName"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ETag"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ConditionRecordIsEditable"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ConditionRecordIsDraft"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ShippingTypeName"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/Status"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ConditionChangeReasonText"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ConditionText"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/HasDraftEntity"><Annotation Term="UI.HiddenFilter"/><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ActiveUUID"><Annotation Term="UI.HiddenFilter"/><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/DraftEntityCreationDateTime"><Annotation Term="UI.HiddenFilter"/><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/DraftEntityLastChangeDateTime"><Annotation Term="UI.HiddenFilter"/><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/HasActiveEntity"><Annotation Term="UI.HiddenFilter"/><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/IsActiveEntity"><Annotation Term="UI.HiddenFilter"/><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ConditionRecordUUID"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/Activation_ac"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/Edit_ac"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/Preparation_ac"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/Validation_ac"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/AccountTaxType_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/AdditionalMaterialGroup1_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/AdditionalMaterialGroup2_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/AdditionalMaterialGroup3_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/AdditionalMaterialGroup4_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/AdditionalMaterialGroup5_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/AdditionalValueDays_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/BaseUnit_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/BillableControl_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/BRSpcfcFreeDefinedField1_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/BRSpcfcFreeDefinedField2_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/BRSpcfcFreeDefinedField3_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/BRSpcfcTaxBasePercentageCode_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/BRSpcfcTaxDepartureRegion_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/BRSpcfcTaxDestinationRegion_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/BRSpcfcTxGrpDynTaxExceptions_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/BR_NFDocumentType_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/BR_TaxCode_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/CityCode_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/CommodityCode_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ConditionCalculationType_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ConditionChangeReason_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ConditionContract_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ConditionExclusion_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ConditionIsExclusive_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ConditionProcessingStatus_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ConditionQuantity_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ConditionQuantityUnit_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ConditionRateValue_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ConditionRateValueUnit_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ConditionReleaseStatus_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ConditionScaleBasisValue_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ConditionTable_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ConditionText_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ConditionToBaseQtyDnmntr_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ConditionToBaseQtyNmrtr_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ConditionType_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ConditionValidityEndDate_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ConditionValidityStartDate_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ConfigurationNumber_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ConsumptionTaxCtrlCode_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/County_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/Customer_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/CustomerConditionGroup_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/CustomerGroup_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/CustomerHierarchy_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/CustomerPriceGroup_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/CustomerTaxClassification1_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/CustomerTaxClassification2_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/CustomerTaxClassification3_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/CustomerTaxClassification4_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/DepartureCountry_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/DestinationCountry_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/DistributionChannel_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/Division_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/EngagementProject_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/EngagementProjectServiceOrg_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/Equipment_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/FixedValueDate_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/IncotermsClassification_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/IncotermsTransferLocation_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/Industry_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/InternationalArticleNumber_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/LocalSalesTaxApplicabilityCode_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/MainItemMaterialPricingGroup_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/MainItemPricingRefMaterial_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/Material_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/MaterialGroup_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/MaterialPricingGroup_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/OrderQuantityUnit_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/PayerParty_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/PaymentTerms_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/Personnel_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/Plant_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/PlantRegion_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/PostalCode_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/PriceListType_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/PricingDate_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ProductHierarchyNode_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ProductTaxClassification1_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ProductTaxClassification2_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ProductTaxClassification3_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ProductTaxClassification4_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ReferenceSDDocument_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ReferenceSDDocumentItem_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/Region_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/RequirementSegment_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ReturnReason_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ReturnsRefundExtent_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/SalesDocument_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/SalesDocumentItem_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/SalesGroup_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/SalesOffice_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/SalesOrderSalesOrganization_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/SalesOrganization_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/SalesSDDocumentCategory_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/SDDocument_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ServiceDocument_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ServiceDocumentItem_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ShippingType_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ShipToParty_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/SoldToParty_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/StockSegment_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/Supplier_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/TaxCode_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/TaxJurisdiction_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/TechnicalObjectType_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/TimeSheetOvertimeCategory_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/TradingContract_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/TradingContractItem_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/TransactionCurrency_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/TxRlvnceClassfctnForArgentina_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ValueAddedServiceChargeCode_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/VariantCondition_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/WBSElementInternalID_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/WorkItem_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/WorkPackage_fc"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/DepartureCountry">
+				<Annotation Term="Common.Text" Path="DepartureCountryName"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/SalesDocumentItem">
+				<Annotation Term="Common.Text" Path="SalesDocumentItemText"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/BillableControl">
+				<Annotation Term="Common.Text" Path="BillableControlName"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/Industry">
+				<Annotation Term="Common.Text" Path="IndustryKeyText"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ProductHierarchyNode">
+				<Annotation Term="Common.Text" Path="ProductHierarchyNodeText"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/CityCode">
+				<Annotation Term="Common.Text" Path="CityCodeName"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/County">
+				<Annotation Term="Common.Text" Path="CountyName"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/TechnicalObjectType">
+				<Annotation Term="Common.Text" Path="TechnicalObjectTypeDesc"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/Equipment">
+				<Annotation Term="Common.Text" Path="EquipmentName"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/IncotermsClassification">
+				<Annotation Term="Common.Text" Path="IncotermsClassificationName"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/CustomerGroup">
+				<Annotation Term="Common.Text" Path="CustomerGroupName"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/CustomerPriceGroup">
+				<Annotation Term="Common.Text" Path="CustomerPriceGroupName"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/MaterialPricingGroup">
+				<Annotation Term="Common.Text" Path="MaterialPricingGroupName"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/SoldToParty">
+				<Annotation Term="Common.Text" Path="SoldToPartyName"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/Customer">
+				<Annotation Term="Common.Text" Path="CustomerName"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/PayerParty">
+				<Annotation Term="Common.Text" Path="PayerPartyName"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ShipToParty">
+				<Annotation Term="Common.Text" Path="ShipToPartyName"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/Supplier">
+				<Annotation Term="Common.Text" Path="SupplierName"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/DestinationCountry">
+				<Annotation Term="Common.Text" Path="DestinationCountryName"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/MaterialGroup">
+				<Annotation Term="Common.Text" Path="MaterialGroupName"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ReturnsRefundExtent">
+				<Annotation Term="Common.Text" Path="ReturnsRefundExtentDesc"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/AdditionalMaterialGroup1">
+				<Annotation Term="Common.Text" Path="AdditionalMaterialGroup1Name"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/AdditionalMaterialGroup2">
+				<Annotation Term="Common.Text" Path="AdditionalMaterialGroup2Name"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/AdditionalMaterialGroup3">
+				<Annotation Term="Common.Text" Path="AdditionalMaterialGroup3Name"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/AdditionalMaterialGroup4">
+				<Annotation Term="Common.Text" Path="AdditionalMaterialGroup4Name"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/AdditionalMaterialGroup5">
+				<Annotation Term="Common.Text" Path="AdditionalMaterialGroup5Name"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/Personnel">
+				<Annotation Term="Common.Text" Path="PersonFullName"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/PriceListType">
+				<Annotation Term="Common.Text" Path="PriceListTypeName"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/Region">
+				<Annotation Term="Common.Text" Path="RegionName"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/EngagementProjectServiceOrg">
+				<Annotation Term="Common.Text" Path="EngmtProjectServiceOrgName"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/Division">
+				<Annotation Term="Common.Text" Path="DivisionName"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/CommodityCode">
+				<Annotation Term="Common.Text" Path="CommodityCodeText"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/MainItemMaterialPricingGroup">
+				<Annotation Term="Common.Text" Path="MainItmMatlPricingGroupName"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/MainItemPricingRefMaterial">
+				<Annotation Term="Common.Text" Path="MainItemPricingRefMaterialName"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/VariantCondition">
+				<Annotation Term="Common.Text" Path="VariantConditionName"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/SalesOffice">
+				<Annotation Term="Common.Text" Path="SalesOfficeName"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/SalesGroup">
+				<Annotation Term="Common.Text" Path="SalesGroupName"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/SalesOrderSalesOrganization">
+				<Annotation Term="Common.Text" Path="SlsOrderSalesOrganizationName"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/OrderQuantityUnit">
+				<Annotation Term="Common.Text" Path="OrderQuantityUnitName"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/SalesOrganization">
+				<Annotation Term="Common.Text" Path="SalesOrganizationName"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/DistributionChannel">
+				<Annotation Term="Common.Text" Path="DistributionChannelName"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/Material">
+				<Annotation Term="Common.Text" Path="MaterialName"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/TransactionCurrency">
+				<Annotation Term="Common.Text" Path="TransactionCurrencyName"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/WBSElementInternalID">
+				<Annotation Term="Common.Text" Path="WBSDescription"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/WorkPackage">
+				<Annotation Term="Common.Text" Path="WorkPackageName"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/Plant">
+				<Annotation Term="Common.Text" Path="PlantName"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/PlantRegion">
+				<Annotation Term="Common.Text" Path="PlantRegionName"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/WorkItem">
+				<Annotation Term="Common.Text" Path="WorkItemName"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/EngagementProject">
+				<Annotation Term="Common.Text" Path="EngagementProjectName"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/TimeSheetOvertimeCategory">
+				<Annotation Term="Common.Text" Path="TimeSheetOvertimeCategoryText"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/SalesSDDocumentCategory">
+				<Annotation Term="Common.Text" Path="SDDocumentCategoryName"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType/ShippingType">
+				<Annotation Term="Common.Text" Path="ShippingTypeName"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_SlsPricingConditionRecordTPType">
+				<Annotation Term="UI.HeaderInfo">
+					<Record><PropertyValue Property="TypeName" String="Manage Prices - Sales"/><PropertyValue Property="TypeNamePlural" String="Manage Prices - Sales"/></Record>
+				</Annotation>
+				<Annotation Term="UI.LineItem">
+					<Collection>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="ConditionType"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="ConditionTable"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="DepartureCountry"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="SalesDocument"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="SalesDocumentItem"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="BillableControl"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Industry"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="CityCode"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="ConditionContract"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="County"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="TechnicalObjectType"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Equipment"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="CustomerHierarchy"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="IncotermsClassification"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="IncotermsTransferLocation"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="CustomerGroup"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="CustomerPriceGroup"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="MaterialPricingGroup"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="SoldToParty"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Customer"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="PayerParty"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="ShipToParty"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Supplier"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="DestinationCountry"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="MaterialGroup"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="ReturnsRefundExtent"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="AdditionalMaterialGroup1"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="AdditionalMaterialGroup2"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="AdditionalMaterialGroup3"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="AdditionalMaterialGroup4"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="AdditionalMaterialGroup5"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Personnel"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="PriceListType"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="PostalCode"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Region"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="EngagementProjectServiceOrg"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="RequirementSegment"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="StockSegment"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Division"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="CommodityCode"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="TradingContract"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="TradingContractItem"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="MainItemMaterialPricingGroup"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="MainItemPricingRefMaterial"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="VariantCondition"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="ValueAddedServiceChargeCode"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="SDDocument"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="ReferenceSDDocument"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="ReferenceSDDocumentItem"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="SalesOffice"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="SalesGroup"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="SalesOrderSalesOrganization"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="OrderQuantityUnit"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="SalesOrganization"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="DistributionChannel"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Material"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="TransactionCurrency"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="WBSElementInternalID"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="WorkPackage"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Plant"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="PlantRegion"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="WorkItem"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="PricingDate"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="ConditionIsExclusive"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="ConditionScaleBasisValue"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="EngagementProject"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="ConfigurationNumber"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="InternationalArticleNumber"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="SalesSDDocumentCategory"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="ServiceDocument"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="ServiceDocumentItem"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="TimeSheetOvertimeCategory"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="ReturnReason"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="ProductHierarchyNode"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="CustomerConditionGroup"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="ShippingType"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="ConditionValidityStartDate"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="ConditionValidityEndDate"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="ConditionRateValue"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="ConditionQuantity"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="ConditionText"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="PaymentTerms"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="FixedValueDate"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="AdditionalValueDays"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="ConditionToBaseQtyNmrtr"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="ConditionToBaseQtyDnmntr"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="BaseUnit"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="ConditionCalculationType"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="ConditionRecord"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="SalesPriceApprovalRequest"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="ConditionProcessingStatus"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="ConditionReleaseStatus"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Status"/></Record>
+					</Collection>
+				</Annotation><Annotation Term="Common.SemanticObject" String="SalesPrices"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_WorkPackageVHType/WBSElementObject"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_WorkPackageVHType/ProjectInternalID"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_WorkPackageVHType/ProjectType"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_WorkPackageVHType/ControllingArea"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_WorkPackageVHType/ResponsibleCostCenter"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_WorkPackageVHType/RespCostCenterControllingArea"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_WorkPackageVHType/ProfitCenter"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_WorkPackageVHType/ResponsiblePersonName"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_WorkPackageVHType/ResponsiblePerson"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_WorkPackageVHType/ApplicantCode"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_WorkPackageVHType/CustomerProjectName"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.C_WorkPackageVHType/CustProjWorkPackageName"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.I_CostCenterStdVHType">
+				<Annotation Term="UI.LineItem">
+					<Collection>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="ControllingArea"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="CostCenter"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+					</Collection>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.I_CountryVHType/Description"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.I_Customer_VHType/CustomerAccountGroup"><Annotation Term="UI.HiddenFilter"/><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.I_Customer_VHType/AuthorizationGroup"><Annotation Term="UI.HiddenFilter"/><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.I_Customer_VHType/IsBusinessPurposeCompleted"><Annotation Term="UI.HiddenFilter"/><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.I_DraftAdministrativeDataType/DraftUUID"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.I_DraftAdministrativeDataType/DraftEntityType"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.I_DraftAdministrativeDataType/DraftAccessType"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.I_DraftAdministrativeDataType/ProcessingStartDateTime"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.I_DraftAdministrativeDataType/DraftIsKeptByUser"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.I_DraftAdministrativeDataType/EnqueueStartDateTime"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.I_DraftAdministrativeDataType/DraftIsCreatedByMe"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.I_DraftAdministrativeDataType/DraftIsLastChangedByMe"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.I_DraftAdministrativeDataType/DraftIsProcessedByMe"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.I_DraftAdministrativeDataType/CreatedByUserDescription"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.I_DraftAdministrativeDataType/LastChangedByUserDescription"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.I_DraftAdministrativeDataType/InProcessByUserDescription"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.I_PersSettlmtDocStdVHType/SettlmtDocTypeDesc"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.I_PersSettlmtDocStdVHType/PersonFullName"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.I_PersSettlmtDocStdVHType/SettlmtCompnRsnDesc"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.I_PersSettlmtDocStdVHType/SettlmtCompnVarDesc"><Annotation Term="UI.HiddenFilter"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.I_PersSettlmtDocStdVHType/SettlmtDocType">
+				<Annotation Term="Common.Text" Path="SettlmtDocTypeDesc"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextFirst"/></Annotation>
+			</Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.I_PersSettlmtDocStdVHType/SettlmtCompensationReason">
+				<Annotation Term="Common.Text" Path="SettlmtCompnRsnDesc"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/></Annotation>
+			</Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.I_PersSettlmtDocStdVHType/SettlmtCompnVar">
+				<Annotation Term="Common.Text" Path="SettlmtCompnVarDesc"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/></Annotation>
+			</Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.I_PersSettlmtDocStdVHType">
+				<Annotation Term="UI.FilterFacets">
+					<Collection>
+						<Record Type="UI.ReferenceFacet"><PropertyValue Property="Label" String="Document Information"/><PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#FILTER_DOC"/></Record>
+						<Record Type="UI.ReferenceFacet"><PropertyValue Property="Label" String="Personnel Information"/><PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#FILTER_PERSONNEL"/></Record>
+					</Collection>
+				</Annotation>
+				<Annotation Term="UI.FieldGroup" Qualifier="FILTER_DOC">
+					<Record>
+						<PropertyValue Property="Data">
+							<Collection>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="PersonnelSettlementDocument"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="SettlmtDocType"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="SettlmtCompensationReason"/></Record>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="SettlmtCompnVar"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.FieldGroup" Qualifier="FILTER_PERSONNEL">
+					<Record>
+						<PropertyValue Property="Data">
+							<Collection>
+								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="PersonWorkAgreement"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.HeaderInfo">
+					<Record><PropertyValue Property="TypeName" String="Personnel Settlement Document"/><PropertyValue Property="TypeNamePlural" String="Personnel Settlement Documents"/></Record>
+				</Annotation>
+				<Annotation Term="UI.LineItem">
+					<Collection>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="PersonnelSettlementDocument"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="SettlmtDocType"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="SettlmtDocTypeDesc"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="PersonWorkAgreement"/><Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="PersonFullName"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="SettlmtCompensationReason"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="SettlmtCompnRsnDesc"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="SettlmtCompnVar"/></Record>
+						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="SettlmtCompnVarDesc"/></Record>
+					</Collection>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.I_PersWrkAgrmtSrchHelp_1Type/PersonWorkAgrmtAuthznGrpg"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.I_PersWrkAgrmtSrchHelp_1Type/AuthorizationGroup"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.I_PersWrkAgrmtSrchHelp_1Type/IsBusinessPurposeCompleted"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.I_ProductAlternativeUoMType/BaseUnit"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.I_ProductAlternativeUoMType/QuantityNumerator"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.I_ProductAlternativeUoMType/SIUnitCnvrsnRateDenominator"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.I_ProductAlternativeUoMType/QuantityDenominator"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.I_SlsPrcgKeyCombinationType">
+				<Annotation Term="UI.HeaderInfo">
+					<Record><PropertyValue Property="TypeName" String="Key Combination for Pricing in Sales"/><PropertyValue Property="TypeNamePlural" String="Key Combination for Pricing in Sales"/></Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.I_Supplier_VHType/AuthorizationGroup"><Annotation Term="UI.HiddenFilter"/><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.I_Supplier_VHType/SupplierAccountGroup"><Annotation Term="UI.HiddenFilter"/><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.I_Supplier_VHType/IsBusinessPurposeCompleted"><Annotation Term="UI.HiddenFilter"/><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.I_WorkforcePersonSrchHelpType/AuthorizationGroup"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="SD_PRICING_CONDITIONRECORD_SRV.I_WorkforcePersonSrchHelpType/IsBusinessPurposeCompleted"><Annotation Term="UI.Hidden"/></Annotations>
+			<Annotations Target="_Entities">
+				<Annotation Term="Org.OData.Capabilities.V1.BatchSupport">
+					<Record Type="Org.OData.Capabilities.V1.BatchSupportType"><PropertyValue Property="ReferencesAcrossChangeSetsSupported" Bool="true"/></Record>
+				</Annotation>
+				<Annotation Term="SAP__CodeList.CurrencyCodes">
+					<Record><PropertyValue Property="Url" String="../../iwbep/common;v=0001/$metadata"/><PropertyValue Property="CollectionPath" String="Currencies"/></Record>
+				</Annotation>
+				<Annotation Term="SAP__CodeList.UnitsOfMeasure">
+					<Record><PropertyValue Property="Url" String="../../iwbep/common;v=0001/$metadata"/><PropertyValue Property="CollectionPath" String="UnitsOfMeasure"/></Record>
+				</Annotation>
+			</Annotations>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

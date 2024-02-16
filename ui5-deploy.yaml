@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "3.1"
+metadata:
+  name: zzcus.sd.salesprices.manage
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          destination: S4HANA_CLONING
+          url: http://virtual.ds4.sap.paranaxisto.com.br:50000
+        app:
+          name: ZSD_SALESPRICE1
+          description: Custom SD_SALESPRICE1 (Portal Clientes)
+          package: Z001
+          transport: DS4K903204
+        exclude:
+          - /test/

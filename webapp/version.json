@@ -1,0 +1,13 @@
+{
+  "application": "zzcus.sd.salesprices.manage",
+  "version": "9.0.3",
+  "buildNumber": "16",
+  "buildId": "16",
+  "branch": "detached",
+  "revision": "8068a217d90122b312331b1332593f6b657618d5",
+  "GitURL": "",
+  "buildStatus": "${env.buildStatus}",
+  "translationComplete": "${env.translationComplete}",
+  "cidi": "${env.cidi}",
+  "cfdCM": "${env.cfdCM}"
+}

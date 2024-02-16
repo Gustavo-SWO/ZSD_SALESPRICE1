@@ -1,0 +1,207 @@
+{
+    "_version": "1.12.0",
+    "sap.app": {
+        "_version": "1.2.0",
+        "id": "zzcus.sd.salesprices.manage",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "applicationVersion": {
+            "version": "9.0.3"
+        },
+        "ach": "SD-MD-CM",
+        "resources": "resources.json",
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/sap/SD_PRICING_CONDITIONRECORD_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml",
+                    "annotations": [
+                        "SD_PRICING_CONDITIONREC_ANNO_MDL",
+                        "annotation1"
+                    ]
+                }
+            },
+            "SD_PRICING_CONDITIONREC_ANNO_MDL": {
+                "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='SD_PRICING_CONDITIONREC_ANNO_MDL',Version='0001')/$value/",
+                "type": "ODataAnnotation",
+                "settings": {
+                    "localUri": "localService/SD_PRICING_CONDITIONREC_ANNO_MDL.xml"
+                }
+            },
+            "annotation1": {
+                "type": "ODataAnnotation",
+                "uri": "annotations/annotation1.xml",
+                "settings": {
+                    "localUri": "annotations/annotation1.xml"
+                }
+            }
+        },
+        "sourceTemplate": {
+            "id": "sap.ui.ui5-template-plugin.1worklist",
+            "version": "1.64.1",
+            "toolsId": "88e4f284-d500-4e06-bece-c9e8ea2502cb"
+        },
+        "crossNavigation": {
+            "inbounds": {
+                "intent1": {
+                    "signature": {
+                        "parameters": {},
+                        "additionalParameters": "allowed"
+                    },
+                    "semanticObject": "PricesInSales",
+                    "action": "manage"
+                }
+            }
+        }
+    },
+    "sap.fiori": {
+        "registrationIds": [
+            "F4111"
+        ],
+        "archeType": "transactional"
+    },
+    "sap.ui": {
+        "fullWidth": true,
+        "technology": "UI5",
+        "icons": {
+            "icon": "sap-icon://task",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "rootView": {
+            "viewName": "zzcus.sd.salesprices.manage.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "app"
+        },
+        "dependencies": {
+            "minUI5Version": "1.90.2",
+            "libs": {
+                "sap.ui.core": {},
+                "sap.ui.generic.app": {
+                    "lazy": true
+                },
+                "sap.m": {
+                    "lazy": false
+                },
+                "sap.ui.comp": {
+                    "lazy": false
+                },
+                "sap.f": {
+                    "lazy": true
+                },
+                "sap.ui.unified": {
+                    "lazy": false
+                },
+                "sap.ui.layout": {
+                    "lazy": false
+                },
+                "sap.s4h.cfnd.featuretoggle": {
+                    "minVersion": "11.20.0-SNAPSHOT",
+                    "lazy": false
+                }
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "zzcus.sd.salesprices.manage.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay"
+                }
+            },
+            "@i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "uri": "i18n/i18n.properties"
+            }
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "viewPath": "zzcus.sd.salesprices.manage.view",
+                "controlId": "app",
+                "controlAggregation": "pages",
+                "bypassed": {
+                    "target": [
+                        "notFound"
+                    ]
+                },
+                "async": true
+            },
+            "routes": [
+                {
+                    "pattern": "",
+                    "name": "worklist",
+                    "target": [
+                        "worklist"
+                    ]
+                },
+                {
+                    "pattern": "sap-iapp-state={id}",
+                    "name": "localstate-old",
+                    "target": [
+                        "worklist"
+                    ]
+                },
+                {
+                    "pattern": "{?query}",
+                    "name": "localstate-new",
+                    "target": [
+                        "worklist"
+                    ]
+                },
+                {
+                    "pattern": "C_SlsCndnRecdImprtHist/",
+                    "name": "history",
+                    "target": [
+                        "history"
+                    ]
+                }
+            ],
+            "targets": {
+                "worklist": {
+                    "viewName": "Worklist",
+                    "viewId": "worklist",
+                    "viewLevel": 1,
+                    "title": "{i18n>worklistViewTitle}"
+                },
+                "history": {
+                    "viewName": "History",
+                    "viewId": "history",
+                    "viewLevel": 2,
+                    "title": "{i18n>historyViewTitle}"
+                },
+                "notFound": {
+                    "viewName": "NotFound",
+                    "viewId": "notFound"
+                }
+            }
+        },
+        "flexEnabled": true
+    }
+}

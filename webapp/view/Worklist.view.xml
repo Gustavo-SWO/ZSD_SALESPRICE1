@@ -1,0 +1,116 @@
+<!--
+
+    Copyright (C) 2009-2021 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<mvc:View controllerName="zzcus.sd.salesprices.manage.controller.Worklist" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core"
+	xmlns:smartFilterBar="sap.ui.comp.smartfilterbar" xmlns:smartTable="sap.ui.comp.smarttable" xmlns:f="sap.f"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:sv="sap.ui.comp.smartvariants" xmlns:footerbar="sap.ushell.ui.footerbar"
+	xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" id="worklistView">
+	<f:DynamicPage id="listPage" busy="{busy>/isBusy}" showFooter="false" toggleHeaderOnTitleClick="true" preserveHeaderStateOnScroll="false"
+		fitContent="true">
+		<f:title>
+			<f:DynamicPageTitle id="dynamicalPageTitle">
+				<f:heading>
+					<sv:SmartVariantManagement id="pageVariantId" persistencyKey="pageVariantKey" showShare="true" showExecuteOnSelection="true"
+						entitySet="C_SlsPricingConditionRecordTP" save="onSaveVariant"/>
+				</f:heading>
+				<f:snappedContent>
+					<Text id="statusText" wrapping="false"/>
+				</f:snappedContent>
+			</f:DynamicPageTitle>
+		</f:title>
+		<f:header>
+			<f:DynamicPageHeader id="dynamicalPageHeader" pinnable="true">
+				<f:content>
+					<smartFilterBar:SmartFilterBar smartVariant="pageVariantId" id="smartFilterBar" entitySet="C_SlsPricingConditionRecordTP"
+						persistencyKey="SmartFilterPKey" afterVariantLoad="onSFBAfterVariantLoad" basicSearchFieldName="ConditionRecord" enableBasicSearch="false"
+						considerSelectionVariants="true" search="onSearch" filterChange="onFilterChange" useToolbar="false"
+						assignedFiltersChanged="onAssignedFiltersChanged" initialise="onInitSmartFilterBar">
+						<smartFilterBar:controlConfiguration>
+							<smartFilterBar:ControlConfiguration id="editStatus" index="1" key="EditingStatus" controlType="dropDownList" filterType="multiple"
+								label="{i18n>editingStatus}" preventInitialDataFetchInValueHelpDialog="false" visibleInAdvancedArea="true">
+								<smartFilterBar:customControl>
+									<ComboBox id="filterbarEditingStatusSelect" selectedKey="all">
+										<items>
+											<core:Item id="all" key="all" text="{i18n>all}"/>
+											<core:Item id="ownDraft" key="ownDraft" text="{i18n>ownDraft}"/>
+											<core:Item id="unchanged" key="unchanged" text="{i18n>unchanged}"/>
+										</items>
+									</ComboBox>
+								</smartFilterBar:customControl>
+							</smartFilterBar:ControlConfiguration>
+							<smartFilterBar:ControlConfiguration id="filterMethod" index="2" key="FilterMethod" controlType="dropDownList" filterType="single"
+								label="{i18n>filterMethod}" preventInitialDataFetchInValueHelpDialog="false" visibleInAdvancedArea="true">
+								<smartFilterBar:customControl>
+									<ComboBox id="filterbarFitlerMethodSelect" selectedKey="OR">
+										<items>
+											<core:Item id="or" key="OR" text="{i18n>OR}"/>
+											<core:Item id="and" key="AND" text="{i18n>AND}"/>
+										</items>
+									</ComboBox>
+								</smartFilterBar:customControl>
+							</smartFilterBar:ControlConfiguration>
+							<smartFilterBar:ControlConfiguration id="conditionType" key="ConditionType" visibleInAdvancedArea="true" index="3"/>
+							<smartFilterBar:ControlConfiguration id="conditionTable" key="ConditionTable" visibleInAdvancedArea="true" index="4"
+								label="{i18n>tableLabel}"/>
+							<smartFilterBar:ControlConfiguration id="validOn" key="ValidOnDate" visibleInAdvancedArea="true" index="5"/>
+							<smartFilterBar:ControlConfiguration id="conditionRecord" key="ConditionRecord" visibleInAdvancedArea="true" index="6"/>
+							<!--<smartFilterBar:ControlConfiguration id="approveRequestID" key="SalesPriceApprovalRequest" visibleInAdvancedArea="true" index="7"/>-->
+							<!--<smartFilterBar:ControlConfiguration id="processingStatus" key="ConditionProcessingStatus" visibleInAdvancedArea="true" index="8"/>-->
+							<!--<smartFilterBar:ControlConfiguration id="releaseStatus" key="ConditionReleaseStatus" visibleInAdvancedArea="true" index="9"/>-->
+						</smartFilterBar:controlConfiguration>
+					</smartFilterBar:SmartFilterBar>
+				</f:content>
+			</f:DynamicPageHeader>
+		</f:header>
+		<f:content>
+			<smartTable:SmartTable id="LineItemsSmartTable" entitySet="C_SlsPricingConditionRecordTP" smartVariant="pageVariantId"
+				smartFilterId="smartFilterBar" tableType="AnalyticalTable" useVariantManagement="true" useTablePersonalisation="true"
+				showTablePersonalisation="{=${busy>/isVisible}===false}" beforeRebindTable="onBeforeRebindTable" header="{i18n>tableHeader}"
+				showRowCount="true" persistencyKey="SmartTablePKey" enableAutoBinding="false" fieldChange="onValueChange" useExportToExcel="false"
+				afterVariantSave="onAfterTableVariantSave" placeToolbarInTable="true" class="sapUiResponsiveContentPadding"
+				requestAtLeastFields="IsActiveEntity,DraftEntityLastChangeDateTime,ConditionRecordIsDraft,ConditionRateValueUnit_fc,ConditionQuantityUnit_fc,ConditionRecord,Status"
+				dataReceived="onDataReceived" initialise="onInitSmartTable">
+				<smartTable:customToolbar>
+					<OverflowToolbar id="toolBar" design="Transparent">
+						<ToolbarSpacer id="toolbarspace"/>
+						<Button id="create" text="{i18n>create}" press="onCreate" tooltip="{i18n>createSalesPrice}"/>
+						<Button id="edit" text="{i18n>edit}" press="onEdit" tooltip="{i18n>editSalesPrice}" visible="{=${busy>/isVisible}===false}"/>
+						<Button id="save" text="{i18n>save}" press="onSave" tooltip="{i18n>saveSalesPrices}" visible="{busy>/isVisible}"/>
+						<Button id="cancel" text="{i18n>cancel}" press="onCancel" tooltip="{i18n>cancelSalesPrices}" visible="{busy>/isVisible}"/>
+						<Button id="copy" text="{i18n>copy}" press="onCopy" tooltip="{i18n>copySalesPrices}" enabled="false"/>
+						<Button id="requestApprove" text="{i18n>requestApprove}" press="onRequestApprove" tooltip="{i18n>sendApproveRequest}" enabled="false"/>
+						<!--<Button id="withdrawApprove" text="{i18n>withdrawApprove}" press="onWithdrawApprove" tooltip="{i18n>withdrawApproveRequest}" enabled="false"/>-->
+						<Button id="delete" text="{i18n>delete}" press="onDelete" tooltip="{i18n>deleteSalesPrices}" enabled="false"/>
+						<Button id="import" text="{i18n>import}" press="onImport" tooltip="{i18n>importSalesPrice}"/>
+						<MenuButton id="export" text="{i18n>export}" tooltip="{i18n>exportSalesPrice}">
+							<menu>
+								<Menu id="exportMenu">
+									<MenuItem id="export1" text="{i18n>export}" press="onExport1"/>
+									<MenuItem id="export2" text="{i18n>exportWithText}" press="onExport2"/>
+								</Menu>
+							</menu>
+						</MenuButton>
+						<Button id="download" text="{i18n>downloadTemplate}" tooltip="{i18n>downloadSalesPricesTemplate}" type="Transparent"
+							press=".onFileTemplateDownload"/>
+						<Button id="viewHistory" text="{i18n>viewHistory}" press="onHistory" tooltip="{i18n>viewHistory}"/>
+					</OverflowToolbar>
+				</smartTable:customToolbar>
+				<smartTable:customData>
+					<core:CustomData id="p13nDialogSettings" key="p13nDialogSettings" value="\{&quot;filter&quot;:\{&quot;visible&quot;: false\}\}"/>
+					<core:CustomData id="useSmartField" key="useSmartField" value="true"/>
+					<core:CustomData id="useSmartToggle" key="useSmartToggle" value="true"/>
+				</smartTable:customData>
+			</smartTable:SmartTable>
+		</f:content>
+		<f:footer>
+			<OverflowToolbar id="foolterBar">
+				<Button icon="sap-icon://alert" id="ShowMsg" text="{= ${message>/}.length }" visible="{= ${message>/}.length &gt; 0 }" type="Emphasized"
+					press="onMessagePopoverPress"/>
+				<ToolbarSpacer id="footerspace"/>
+				<DraftIndicator id="draftIndi" visible="{busy>/isVisible}"/>
+			</OverflowToolbar>
+		</f:footer>
+	</f:DynamicPage>
+</mvc:View>
