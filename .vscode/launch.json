@@ -1,7 +1,7 @@
 {
   "configurations": [
     {
-      "name": "Start restore-from-exported",
+      "name": "Start zsd_salesprice1",
       "type": "node",
       "request": "launch",
       "runtimeExecutable": "npx",
@@ -15,7 +15,7 @@
       ],
       "args": [
         "--open",
-        "test/flpSandbox.html#PricesInSales-manage"
+        "test/flpSandbox.html#ZPricesInSales-manage"
       ],
       "console": "internalConsole",
       "internalConsoleOptions": "openOnSessionStart",
@@ -23,12 +23,12 @@
       "port": 9229,
       "env": {
         "DEBUG": "--inspect",
-        "FIORI_TOOLS_URL_PARAMS": "sap-client=210&sap-ui-xx-viewCache=false",
-        "run.config": "{\"handlerId\":\"fiori_tools\",\"runnableId\":\"/home/user/projects/restore-from-exported\"}"
+        "FIORI_TOOLS_URL_PARAMS": "sap-client=240&sap-language=PT&sap-ui-xx-viewCache=false",
+        "run.config": "{\"handlerId\":\"fiori_tools\",\"runnableId\":\"/home/user/projects/zsd_salesprice1\"}"
       }
     },
     {
-      "name": "Start restore-from-exported Mock",
+      "name": "Start zsd_salesprice1 Mock",
       "type": "node",
       "request": "launch",
       "cwd": "${workspaceFolder}",
@@ -42,19 +42,19 @@
       ],
       "args": [
         "--open",
-        "test/flpSandboxMockServer.html#PricesInSales-manage"
+        "test/flpSandboxMockServer.html#ZPricesInSales-manage"
       ],
       "console": "internalConsole",
       "internalConsoleOptions": "openOnSessionStart",
       "outputCapture": "std",
       "port": 9229,
       "env": {
-        "FIORI_TOOLS_URL_PARAMS": "sap-client=210&sap-ui-xx-viewCache=false",
-        "run.config": "{\"handlerId\":\"fiori_tools\",\"runnableId\":\"/home/user/projects/restore-from-exported\"}"
+        "FIORI_TOOLS_URL_PARAMS": "sap-client=240&sap-language=PT&sap-ui-xx-viewCache=false",
+        "run.config": "{\"handlerId\":\"fiori_tools\",\"runnableId\":\"/home/user/projects/zsd_salesprice1\"}"
       }
     },
     {
-      "name": "Start restore-from-exported Local",
+      "name": "Start zsd_salesprice1 Local",
       "type": "node",
       "request": "launch",
       "cwd": "${workspaceFolder}",
@@ -70,15 +70,15 @@
         "--config",
         "./ui5-local.yaml",
         "--open",
-        "test/flpSandbox.html#PricesInSales-manage"
+        "test/flpSandbox.html#ZPricesInSales-manage"
       ],
       "console": "internalConsole",
       "internalConsoleOptions": "openOnSessionStart",
       "outputCapture": "std",
       "port": 9229,
       "env": {
-        "FIORI_TOOLS_URL_PARAMS": "sap-client=210&sap-ui-xx-viewCache=false",
-        "run.config": "{\"handlerId\":\"fiori_tools\",\"runnableId\":\"/home/user/projects/restore-from-exported\"}"
+        "FIORI_TOOLS_URL_PARAMS": "sap-client=240&sap-language=PT&sap-ui-xx-viewCache=false",
+        "run.config": "{\"handlerId\":\"fiori_tools\",\"runnableId\":\"/home/user/projects/zsd_salesprice1\"}"
       }
     }
   ],

@@ -52,7 +52,7 @@
                         "parameters": {},
                         "additionalParameters": "allowed"
                     },
-                    "semanticObject": "PricesInSales",
+                    "semanticObject": "ZPricesInSales",
                     "action": "manage"
                 }
             }
@@ -68,7 +68,7 @@
         "fullWidth": true,
         "technology": "UI5",
         "icons": {
-            "icon": "sap-icon://task",
+            "icon": "sap-icon://lead",
             "favIcon": "",
             "phone": "",
             "phone@2": "",

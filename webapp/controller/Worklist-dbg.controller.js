@@ -126,18 +126,18 @@ sap.ui.define([
 					formatter: function (sStatus, sDraft, sNoAuth, sBlocked, sUnchanged) {
 						var sStatusText;
 						switch (sStatus) {
-						case "A":
-							sStatusText = sNoAuth;
-							break;
-						case "B":
-							sStatusText = sBlocked;
-							break;
-						case "D":
-							sStatusText = sDraft;
-							break;
-						case "U":
-							sStatusText = sUnchanged;
-							break;
+							case "A":
+								sStatusText = sNoAuth;
+								break;
+							case "B":
+								sStatusText = sBlocked;
+								break;
+							case "D":
+								sStatusText = sDraft;
+								break;
+							case "U":
+								sStatusText = sUnchanged;
+								break;
 						}
 
 						return sStatusText;
@@ -168,8 +168,8 @@ sap.ui.define([
 				"ConditionChangeReason,ConditionChangeReasonText,ConditionReleaseStatusText";
 			this._oSmartTable.setIgnoreFromPersonalisation(sIgnoreFields);
 
-			this.byId("edit").setEnabled(false);
-			this.byId("export").setEnabled(false);
+			// this.byId("edit").setEnabled(false);
+			// this.byId("export").setEnabled(false);
 
 			this._handleFeature();
 		},
@@ -198,8 +198,9 @@ sap.ui.define([
 			}
 
 			// Special logic for creating
-			this._getDraftStatus();
-			var sStatus = this._oDraftStatus.getSelectedKey();
+			// this._getDraftStatus();
+			// var sStatus = this._oDraftStatus.getSelectedKey();
+			var sStatus = "all";
 			var aFilters = [];
 			if (mBindingParams.filters.length === 0 && sStatus === "all" && this.aShowObj.length > 0) {
 				if (this.iSizeBeforeCreate <= this.aShowObj.length) {
@@ -217,22 +218,22 @@ sap.ui.define([
 			// Editing Status as filter
 			if (sStatus !== "all") {
 				switch (sStatus) {
-				case "ownDraft":
-					mBindingParams.filters.push(new Filter("IsActiveEntity", FilterOperator.EQ, false));
-					break;
-				case "unchanged":
-					mBindingParams.filters.push(new Filter({
-						filters: [new Filter("IsActiveEntity", FilterOperator.EQ, true),
+					case "ownDraft":
+						mBindingParams.filters.push(new Filter("IsActiveEntity", FilterOperator.EQ, false));
+						break;
+					case "unchanged":
+						mBindingParams.filters.push(new Filter({
+							filters: [new Filter("IsActiveEntity", FilterOperator.EQ, true),
 							new Filter("HasDraftEntity", FilterOperator.EQ, false)
-						],
-						and: true
-					}));
-					break;
+							],
+							and: true
+						}));
+						break;
 				}
 			}
 
-			this._getFilterMethod();
-			var sFilterMethod = this._oFilterMethod.getSelectedKey();
+			// this._getFilterMethod();
+			// var sFilterMethod = this._oFilterMethod.getSelectedKey();
 			var aParamsFilterData = mBindingParams.filters;
 
 			//Process the ValidOnDate, Convert it to ConditionValidityStartDate <= ValidOnDate <= ConditionValidityEndDate
@@ -244,10 +245,10 @@ sap.ui.define([
 				// this._processNormalFilter(aParamsFilterData, mBindingParams, "SalesPriceApprovalRequest");
 			}
 
-			//For "Filter with applicable criteria only", split the filter condition and remove the automatically generated filter condition
-			if (sFilterMethod === "OR") {
-				this._parseFilterMethod(aParamsFilterData, mBindingParams);
-			}
+			// //For "Filter with applicable criteria only", split the filter condition and remove the automatically generated filter condition
+			// if (sFilterMethod === "OR") {
+			// 	this._parseFilterMethod(aParamsFilterData, mBindingParams);
+			// }
 
 			// Show new created data in worklist table
 			this._rebuildFilter(mBindingParams);
@@ -374,21 +375,21 @@ sap.ui.define([
 
 			// Return from this function
 			if (oEvent.getParameter("afterFilterDataUpdate") || oEvent.getParameter("sId") === "valueListChanged" || oEvent.getParameter(
-					"mParameters") === undefined) {
+				"mParameters") === undefined) {
 				return;
 			}
 
 			// Disable buttons
-			this.byId("create").setEnabled(false);
-			this.byId("edit").setEnabled(false);
-			this.byId("import").setEnabled(false);
-			this.byId("export").setEnabled(false);
-			var sStatus = this._oSmartFilterBar.getControlByKey("EditingStatus").getSelectedKey();
-			if (sStatus === "ownDraft") {
-				this.byId("download").setEnabled(false);
-			} else {
-				this.byId("download").setEnabled(true);
-			}
+			// this.byId("create").setEnabled(false);
+			// this.byId("edit").setEnabled(false);
+			// this.byId("import").setEnabled(false);
+			// this.byId("export").setEnabled(false);
+			// var sStatus = this._oSmartFilterBar.getControlByKey("EditingStatus").getSelectedKey();
+			// if (sStatus === "ownDraft") {
+			// 	this.byId("download").setEnabled(false);
+			// } else {
+			// this.byId("download").setEnabled(true);
+			// }
 
 			var iIndexofConditionType = oEvent.getParameter("mParameters").id.toString().search("ConditionType");
 			var iIndexofConditionTable = oEvent.getParameter("mParameters").id.toString().search("ConditionTable");
@@ -493,15 +494,15 @@ sap.ui.define([
 			this._setTableDisplayed();
 
 			// Set buttons enabled
-			this.byId("create").setEnabled(true);
-			var sStatus = this._oSmartFilterBar.getControlByKey("EditingStatus").getSelectedKey();
-			if (sStatus === "ownDraft") {
-				this.byId("import").setEnabled(false);
-				this.byId("download").setEnabled(false);
-			} else {
-				this.byId("import").setEnabled(true);
-				this.byId("download").setEnabled(true);
-			}
+			// this.byId("create").setEnabled(true);
+			// var sStatus = this._oSmartFilterBar.getControlByKey("EditingStatus").getSelectedKey();
+			// if (sStatus === "ownDraft") {
+			// 	this.byId("import").setEnabled(false);
+			// 	this.byId("download").setEnabled(false);
+			// } else {
+			// 	this.byId("import").setEnabled(true);
+			// this.byId("download").setEnabled(true);
+			// }
 			this.bSearch = true;
 
 			this.storeCurrentAppState();
@@ -1083,34 +1084,34 @@ sap.ui.define([
 			}
 
 			// Force to set display mode
-			if (!this.byId("create").getEnabled()) {
-				this.byId("create").setEnabled(true);
-			}
+			// if (!this.byId("create").getEnabled()) {
+			// 	this.byId("create").setEnabled(true);
+			// }
 
-			var sStatus = this._oSmartFilterBar.getControlByKey("EditingStatus").getSelectedKey();
-			if (sStatus === "ownDraft") {
-				this.byId("import").setEnabled(false);
-				this.byId("download").setEnabled(false);
-			} else {
-				this.byId("import").setEnabled(true);
-				this.byId("download").setEnabled(true);
-			}
+			// var sStatus = this._oSmartFilterBar.getControlByKey("EditingStatus").getSelectedKey();
+			// if (sStatus === "ownDraft") {
+			// 	this.byId("import").setEnabled(false);
+			// 	this.byId("download").setEnabled(false);
+			// } else {
+			// 	this.byId("import").setEnabled(true);
+			// this.byId("download").setEnabled(true);
+			// }
 			if (iCount === "0" || iCount <= 0) {
 				this._setTableDisplayed();
-				this.byId("edit").setEnabled(false);
-				this.byId("export").setEnabled(false);
+				// this.byId("edit").setEnabled(false);
+				// this.byId("export").setEnabled(false);
 				var oData = oEvent.getParameter("mParameters").data;
 				if (oData !== undefined && oData.__batchResponses[0].headers["sap-message"] !== undefined) {
 					this._popMsg();
 				}
 			} else {
 				if (!this._oSmartTable.getEditable()) {
-					this.byId("edit").setEnabled(this.byId("create").getEnabled());
-					if (this._oSmartFilterBar.getFilters().length) {
-						if (sStatus === "unchanged" || sStatus === "all") {
-							this.byId("export").setEnabled(this.byId("create").getEnabled());
-						}
-					}
+					// this.byId("edit").setEnabled(this.byId("create").getEnabled());
+					// if (this._oSmartFilterBar.getFilters().length) {
+					// 	if (sStatus === "unchanged" || sStatus === "all") {
+					// 		this.byId("export").setEnabled(this.byId("create").getEnabled());
+					// 	}
+					// }
 				} else {
 					// If the first row is active entity, then set display mode
 					var oContext = this._oTable.getContextByIndex(0);
@@ -1127,81 +1128,94 @@ sap.ui.define([
 		},
 
 		onInitSmartTable: function (oEvent) {
-			var aCommonFields = ["ConditionValidityStartDate", "ConditionValidityEndDate", "ConditionRateValue", "ConditionQuantity",
-				"ConditionLowerLimit", "ConditionUpperLimit", "ConditionText", "PaymentTerms", "FixedValueDate", "AdditionalValueDays",
-				"ConditionToBaseQtyNmrtr", "ConditionToBaseQtyDnmntr", "BaseUnit", "ConditionCalculationType", "ConditionRecord",
-				"SalesPriceApprovalRequest", "ConditionProcessingStatus", "ConditionReleaseStatus", "Status"
-			];
-			var aSortDisableFields = ["PaymentTerms", "FixedValueDate", "AdditionalValueDays", "ConditionToBaseQtyNmrtr", "ConditionText",
-				"ConditionToBaseQtyDnmntr", "BaseUnit", "ConditionLowerLimit", "ConditionUpperLimit", "ConditionCalculationType",
-				"ConditionRateValue", "ConditionRecord", "SalesPriceApprovalRequest", "ConditionProcessingStatus", "ConditionReleaseStatus"
-			];
+			// var aCommonFields = ["ConditionValidityStartDate", "ConditionValidityEndDate", "ConditionRateValue", "ConditionQuantity",
+			// 	"ConditionLowerLimit", "ConditionUpperLimit", "ConditionText", "PaymentTerms", "FixedValueDate", "AdditionalValueDays",
+			// 	"ConditionToBaseQtyNmrtr", "ConditionToBaseQtyDnmntr", "BaseUnit", "ConditionCalculationType", "ConditionRecord",
+			// 	"SalesPriceApprovalRequest", "ConditionProcessingStatus", "ConditionReleaseStatus", "Status"
+			// ];
+			// var aSortDisableFields = ["PaymentTerms", "FixedValueDate", "AdditionalValueDays", "ConditionToBaseQtyNmrtr", "ConditionText",
+			// 	"ConditionToBaseQtyDnmntr", "BaseUnit", "ConditionLowerLimit", "ConditionUpperLimit", "ConditionCalculationType",
+			// 	"ConditionRateValue", "ConditionRecord", "SalesPriceApprovalRequest", "ConditionProcessingStatus", "ConditionReleaseStatus"
+			// ];
 
-			// Personalization setting columns
-			var oUiState = this._oSmartTable.getUiState();
-			var oPV = oUiState.getPresentationVariant();
-			var oViz = oPV.Visualizations[0];
-			oViz.Content = [];
-			this.aCopyFields = [];
+			// // Personalization setting columns
+			// var oUiState = this._oSmartTable.getUiState();
+			// var oPV = oUiState.getPresentationVariant();
+			// var oViz = oPV.Visualizations[0];
+			// oViz.Content = [];
+			// this.aCopyFields = [];
 
-			// Validity columns
+			// // Validity columns
+			// var aColumns = this._oTable.getColumns();
+			// for (var m = 0; m < aColumns.length; m++) {
+			// 	var aFieldNames = aColumns[m].getId().split("-");
+			// 	var sFieldName = aFieldNames[aFieldNames.length - 1];
+			// 	if (sFieldName === "Status") {
+			// 		aColumns[m].setTemplate(this.oTemplate); //Set Draft Text
+			// 		this.vEditStatusPos = m;
+			// 		aColumns[m].setShowSortMenuEntry(false);
+			// 	} else if (sFieldName === "ConditionQuantity") {
+			// 		this.vQuantityPos = m; //Get position of Quantity column
+			// 		aColumns[m].setShowSortMenuEntry(false); //Set ConditionQuantity can not sort
+			// 	} else if (sFieldName === "ConditionTable") {
+			// 		aColumns[m].setShowSortMenuEntry(false);
+			// 		this.vConditionTablePos = m; //Get position of ConditionTable column
+			// 	} else if (sFieldName === "ConditionLowerLimit") {
+			// 		this.vConditionLowerLimitPos = m; //Get position of ConditionLowerLimit column
+			// 		aColumns[m].setShowSortMenuEntry(false); //Set ConditionQuantity can not sort
+			// 	} else if (sFieldName === "ConditionUpperLimit") {
+			// 		this.vConditionUpperLimitPos = m; //Get position of ConditionUpperLimit column	
+			// 		aColumns[m].setShowSortMenuEntry(false); //Set ConditionQuantity can not sort
+			// 	} else if (aSortDisableFields.indexOf(sFieldName) !== -1) {
+			// 		aColumns[m].setShowSortMenuEntry(false);
+			// 	}
+
+			// 	this.aCopyFields.push(sFieldName);
+			// 	if (aCommonFields.indexOf(sFieldName) === -1) {
+			// 		var oVisibleColumn = {};
+			// 		oVisibleColumn.Value = sFieldName;
+			// 		oViz.Content.push(oVisibleColumn);
+			// 	}
+			// }
+
+			// // Extensibility columns
+			// var aIgnoreFields = this._oSmartTable.getIgnoreFromPersonalisation().split(",");
+			// for (var i in this._oSmartTable._aColumnKeys) {
+			// 	if (this.aCopyFields.indexOf(this._oSmartTable._aColumnKeys[i]) !== -1 ||
+			// 		aIgnoreFields.indexOf(this._oSmartTable._aColumnKeys[i]) !== -1) {
+			// 		continue;
+			// 	} else {
+			// 		this.aCopyFields.push(this._oSmartTable._aColumnKeys[i]);
+			// 		var oVisibleColumn1 = {};
+			// 		oVisibleColumn1.Value = this._oSmartTable._aColumnKeys[i];
+			// 		oViz.Content.push(oVisibleColumn1);
+			// 	}
+			// }
+
+			// // Common columns
+			// for (var n = 0; n < aCommonFields.length; n++) {
+			// 	var oVisibleColumn2 = {};
+			// 	oVisibleColumn2.Value = aCommonFields[n];
+			// 	oViz.Content.push(oVisibleColumn2);
+			// }
+
+			// // Update the UI State on the smart table
+			// this._oSmartTable.setUiState(oUiState);
+
+			// this.iRowHeight = this._oTable._getBaseRowHeight();
+
+			//***CUSTOM***
+			var aVisibleCols = ["ConditionType","ConditionTable", "Customer", "AdditionalMaterialGroup1", "SalesOrganization", "Material", "Plant", "ConditionValidityStartDate", "ConditionValidityEndDate", "ConditionTable_fc", "Customer_fc", "CustomerName", "AdditionalMaterialGroup1_fc", "AdditionalMaterialGroup1Name", "SalesOrganization_fc", "SalesOrganizationName", "Material_fc", "MaterialName", "Plant_fc", "PlantName", "ZZKUNZR", "ZZ1_KUNZR_PCHF", "ConditionValidityStartDate_fc", "ConditionValidityEndDate_fc", "ConditionRateValue", "ConditionRateValue_fc", "ConditionRateValueUnit", "ConditionQuantity", "ConditionQuantity_fc", "ConditionQuantityUnit", "ConditionText", "ConditionText_fc", "IsActiveEntity", "DraftEntityLastChangeDateTime", "ConditionRecordIsDraft", "ConditionRateValueUnit_fc", "ConditionQuantityUnit_fc", "ConditionRecord", "Status"];
 			var aColumns = this._oTable.getColumns();
 			for (var m = 0; m < aColumns.length; m++) {
 				var aFieldNames = aColumns[m].getId().split("-");
 				var sFieldName = aFieldNames[aFieldNames.length - 1];
-				if (sFieldName === "Status") {
-					aColumns[m].setTemplate(this.oTemplate); //Set Draft Text
-					this.vEditStatusPos = m;
-					aColumns[m].setShowSortMenuEntry(false);
-				} else if (sFieldName === "ConditionQuantity") {
-					this.vQuantityPos = m; //Get position of Quantity column
-					aColumns[m].setShowSortMenuEntry(false); //Set ConditionQuantity can not sort
-				} else if (sFieldName === "ConditionTable") {
-					aColumns[m].setShowSortMenuEntry(false);
-					this.vConditionTablePos = m; //Get position of ConditionTable column
-				} else if (sFieldName === "ConditionLowerLimit") {
-					this.vConditionLowerLimitPos = m; //Get position of ConditionLowerLimit column
-					aColumns[m].setShowSortMenuEntry(false); //Set ConditionQuantity can not sort
-				} else if (sFieldName === "ConditionUpperLimit") {
-					this.vConditionUpperLimitPos = m; //Get position of ConditionUpperLimit column	
-					aColumns[m].setShowSortMenuEntry(false); //Set ConditionQuantity can not sort
-				} else if (aSortDisableFields.indexOf(sFieldName) !== -1) {
-					aColumns[m].setShowSortMenuEntry(false);
-				}
-
-				this.aCopyFields.push(sFieldName);
-				if (aCommonFields.indexOf(sFieldName) === -1) {
-					var oVisibleColumn = {};
-					oVisibleColumn.Value = sFieldName;
-					oViz.Content.push(oVisibleColumn);
-				}
-			}
-
-			// Extensibility columns
-			var aIgnoreFields = this._oSmartTable.getIgnoreFromPersonalisation().split(",");
-			for (var i in this._oSmartTable._aColumnKeys) {
-				if (this.aCopyFields.indexOf(this._oSmartTable._aColumnKeys[i]) !== -1 ||
-					aIgnoreFields.indexOf(this._oSmartTable._aColumnKeys[i]) !== -1) {
-					continue;
+				if (aVisibleCols.indexOf(sFieldName) !== -1) {
+					aColumns[m].setVisible(true);
 				} else {
-					this.aCopyFields.push(this._oSmartTable._aColumnKeys[i]);
-					var oVisibleColumn1 = {};
-					oVisibleColumn1.Value = this._oSmartTable._aColumnKeys[i];
-					oViz.Content.push(oVisibleColumn1);
+					aColumns[m].setVisible(false);
 				}
 			}
-
-			// Common columns
-			for (var n = 0; n < aCommonFields.length; n++) {
-				var oVisibleColumn2 = {};
-				oVisibleColumn2.Value = aCommonFields[n];
-				oViz.Content.push(oVisibleColumn2);
-			}
-
-			// Update the UI State on the smart table
-			this._oSmartTable.setUiState(oUiState);
-
-			this.iRowHeight = this._oTable._getBaseRowHeight();
 		},
 
 		onInitSmartFilterBar: function (oEvent) {
@@ -1444,30 +1458,30 @@ sap.ui.define([
 			var bEditable = this._oSmartTable.getEditable();
 			var aSelectedRow = this._oPlugins.getSelectedIndices();
 			if (!bEditable && aSelectedRow.length > 0) {
-				this.byId("create").setEnabled(false);
-				this.byId("edit").setEnabled(false);
+				// this.byId("create").setEnabled(false);
+				// this.byId("edit").setEnabled(false);
 
 				var oCheckResult = this._checkSelectedData();
-				this.byId("requestApprove").setEnabled(oCheckResult.bSend);
-				this.byId("copy").setEnabled(oCheckResult.bCopy);
-				this.byId("delete").setEnabled(oCheckResult.bDelete);
+				// this.byId("requestApprove").setEnabled(oCheckResult.bSend);
+				// this.byId("copy").setEnabled(oCheckResult.bCopy);
+				// this.byId("delete").setEnabled(oCheckResult.bDelete);
 				// this.byId("withdrawApprove").setEnabled(true);
 			} else {
-				this.byId("create").setEnabled(true);
-				this.byId("edit").setEnabled(true);
-				this.byId("copy").setEnabled(false);
-				this.byId("delete").setEnabled(false);
-				this.byId("requestApprove").setEnabled(false);
+				// this.byId("create").setEnabled(true);
+				// this.byId("edit").setEnabled(true);
+				// this.byId("copy").setEnabled(false);
+				// this.byId("delete").setEnabled(false);
+				// this.byId("requestApprove").setEnabled(false);
 				// this.byId("withdrawApprove").setEnabled(false);
 			}
-			var sStatus = this._oSmartFilterBar.getControlByKey("EditingStatus").getSelectedKey();
-			if (sStatus === "unchanged" || sStatus === "all") {
-				if (aSelectedRow.length > 0 || this._oSmartFilterBar.getFilters().length === 0) {
-					this.byId("export").setEnabled(false);
-				} else {
-					this.byId("export").setEnabled(true);
-				}
-			}
+			// var sStatus = this._oSmartFilterBar.getControlByKey("EditingStatus").getSelectedKey();
+			// if (sStatus === "unchanged" || sStatus === "all") {
+			// 	if (aSelectedRow.length > 0 || this._oSmartFilterBar.getFilters().length === 0) {
+			// 		this.byId("export").setEnabled(false);
+			// 	} else {
+			// this.byId("export").setEnabled(true);
+			// }
+			// }
 		},
 
 		_getDraftStatus: function () {
@@ -1995,16 +2009,16 @@ sap.ui.define([
 			var sStatus = this._oDraftStatus.getSelectedKey();
 
 			switch (sStatus) {
-			case "ownDraft":
-				if (sAction === "Save" || sAction === "Cancel") {
-					this._oDraftStatus.setSelectedKey("all");
-				}
-				break;
-			case "unchanged":
-				if (sAction === "Create" || sAction === "Edit" || sAction === "Copy" || sAction === "Save" || sAction === "Cancel") {
-					this._oDraftStatus.setSelectedKey("all");
-				}
-				break;
+				case "ownDraft":
+					if (sAction === "Save" || sAction === "Cancel") {
+						this._oDraftStatus.setSelectedKey("all");
+					}
+					break;
+				case "unchanged":
+					if (sAction === "Create" || sAction === "Edit" || sAction === "Copy" || sAction === "Save" || sAction === "Cancel") {
+						this._oDraftStatus.setSelectedKey("all");
+					}
+					break;
 			}
 		},
 
@@ -2377,7 +2391,7 @@ sap.ui.define([
 			for (var x in aParamsFilterData[0].aFilters) {
 				if (aParamsFilterData[0].aFilters[x].aFilters && aParamsFilterData[0].aFilters[x].aFilters[0].sPath === sFilterName) {
 					if (x === "0" && aParamsFilterData[0].aFilters.length > 1 && aParamsFilterData[0].aFilters[1].aFilters && aParamsFilterData[0].aFilters[
-							1].aFilters[0].sPath === sFilterName) {
+						1].aFilters[0].sPath === sFilterName) {
 						// Single filter with both I and E
 						aConditionReocordNoItem = aParamsFilterData[0].aFilters;
 						bAnd = aParamsFilterData[0].bAnd;
@@ -2445,7 +2459,7 @@ sap.ui.define([
 						"ConditionTable" && aFilterItem.aFilters[0].sPath !== "ValidOnDate" && aFilterItem.aFilters[0].sPath !== "ConditionRecord") {
 						for (var y = 0; y < aFilterItem.aFilters.length; y++) {
 							var aArrayTemp = [aFilterItem.aFilters[y].sPath, aFilterItem.aFilters[y].sOperator,
-								aFilterItem.aFilters[y].oValue1, aFilterItem.aFilters[y].oValue2
+							aFilterItem.aFilters[y].oValue1, aFilterItem.aFilters[y].oValue2
 							];
 							aKeyFilterFieldData.push(aArrayTemp);
 						}
@@ -3091,17 +3105,17 @@ sap.ui.define([
 
 		_handleFeature: function () {
 			sap.s4h.cfnd.featuretoggle.lib.featuresAsync().then(function (features) {
-				if (features.getFeatureStatus("SD_PRICE_APPROVAL_BASIC_FUNCTION") === true) {
-					// Feature Toggle is ON
-					this.byId("requestApprove").setVisible(true);
-					// this.byId("withdrawApprove").setVisible(true);
-					this.bApproveFeature = true;
-				} else {
-					// Feature Toggle is OFF
-					this.byId("requestApprove").setVisible(false);
-					// this.byId("withdrawApprove").setVisible(false);
-					this.bApproveFeature = false;
-				}
+				// if (features.getFeatureStatus("SD_PRICE_APPROVAL_BASIC_FUNCTION") === true) {
+				// Feature Toggle is ON
+				// this.byId("requestApprove").setVisible(true);
+				// this.byId("withdrawApprove").setVisible(true);
+				// this.bApproveFeature = true;
+				// } else {
+				// Feature Toggle is OFF
+				// this.byId("requestApprove").setVisible(false);
+				// this.byId("withdrawApprove").setVisible(false);
+				this.bApproveFeature = false;
+				// }
 			}.bind(this));
 		},
 
