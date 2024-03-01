@@ -120,7 +120,7 @@ sap.ui.define([
 						this._resetFilterBar(isRebind, bIsInit);
 
 						// Hide Columns
-						this._hideColumn();
+						// this._hideColumn();
 
 						if (bIsInit !== undefined) {
 							//only first navigation need automatically serarch
@@ -150,13 +150,17 @@ sap.ui.define([
 
 				this.aKeyFieldsResultOld = this.aKeyFieldsResult.concat();
 				this.aFilterFields = this.aKeyFields.concat();
+				//GVCA20240301
+				var aIgnoreFields = ["ConditionType","Customer","ConditionRecord","SalesOrganization","Plant","ZZKUNZR","ZZ1_KUNZR_PCHF"];
 				// sap.ui.getCore().aGlobalKeyFields = this.aKeyFields;
 				for (var i in this.aFilters) {
 					if (this.aDefaultFilters.indexOf(this.aFilters[i].getName()) !== -1 ||
 						this.aKeyFields.indexOf(this.aFilters[i].getName()) !== -1 ||
 						this.aOtherSelectedFilter.indexOf(this.aFilters[i].getName()) !== -1) {
-						this.aFilters[i].setVisibleInAdvancedArea(true);
-						continue;
+						if (aIgnoreFields.indexOf(this.aFilters[i].getName()) === -1) { //GVCA20240301
+							this.aFilters[i].setVisibleInAdvancedArea(true);
+							continue;
+						}
 					} else {
 						this.aFilters[i].setVisibleInAdvancedArea(false);
 					}

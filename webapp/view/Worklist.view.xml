@@ -109,9 +109,10 @@
 								index="4"
 								label="{i18n>tableLabel}"
 							>
-								<smartFilterBar:defaultFilterValues>
-									<smartFilterBar:SelectOption low="900"/>
-								</smartFilterBar:defaultFilterValues>
+								<!-- <smartFilterBar:defaultFilterValues>
+									<smartFilterBar:SelectOption low="901"/>
+									<smartFilterBar:SelectOption low="911"/>
+								</smartFilterBar:defaultFilterValues> -->
 							</smartFilterBar:ControlConfiguration>
 							<smartFilterBar:ControlConfiguration
 								id="validOn"

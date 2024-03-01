@@ -1204,8 +1204,8 @@ sap.ui.define([
 
 			// this.iRowHeight = this._oTable._getBaseRowHeight();
 
-			//***CUSTOM***
-			var aVisibleCols = ["ConditionType","ConditionTable", "Customer", "AdditionalMaterialGroup1", "SalesOrganization", "Material", "Plant", "ConditionValidityStartDate", "ConditionValidityEndDate", "ConditionTable_fc", "Customer_fc", "CustomerName", "AdditionalMaterialGroup1_fc", "AdditionalMaterialGroup1Name", "SalesOrganization_fc", "SalesOrganizationName", "Material_fc", "MaterialName", "Plant_fc", "PlantName", "ZZKUNZR", "ZZ1_KUNZR_PCHF", "ConditionValidityStartDate_fc", "ConditionValidityEndDate_fc", "ConditionRateValue", "ConditionRateValue_fc", "ConditionRateValueUnit", "ConditionQuantity", "ConditionQuantity_fc", "ConditionQuantityUnit", "ConditionText", "ConditionText_fc", "IsActiveEntity", "DraftEntityLastChangeDateTime", "ConditionRecordIsDraft", "ConditionRateValueUnit_fc", "ConditionQuantityUnit_fc", "ConditionRecord", "Status"];
+			//GVCA20240228
+			var aVisibleCols = ["Material", "Customer", "ConditionValidityStartDate", "ConditionValidityEndDate", "Material_fc", "MaterialName", "Customer_fc", "CustomerName", "ZZKUNZR", "ZZ1_KUNZR_PCHF", "ConditionValidityStartDate_fc", "ConditionValidityEndDate_fc", "ConditionRateValue", "ConditionRateValue_fc", "ConditionRateValueUnit", "ConditionQuantity", "ConditionQuantity_fc", "ConditionQuantityUnit", "IsActiveEntity", "DraftEntityLastChangeDateTime", "ConditionRecordIsDraft", "ConditionRateValueUnit_fc", "ConditionQuantityUnit_fc", "AdditionalMaterialGroup1", "AdditionalMaterialGroup1_fc", "AdditionalMaterialGroup1Name"];
 			var aColumns = this._oTable.getColumns();
 			for (var m = 0; m < aColumns.length; m++) {
 				var aFieldNames = aColumns[m].getId().split("-");
