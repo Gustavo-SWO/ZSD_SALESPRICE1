@@ -38,6 +38,15 @@
                 "settings": {
                     "localUri": "annotations/annotation1.xml"
                 }
+            },
+            "utilsService": {
+                "uri": "/sap/opu/odata/sap/ZSD_PORTAL_UTILS_SRV/",
+                "type": "OData",
+                "settings": {
+                "annotations": [],
+                "localUri": "localService/metadata.xml",
+                "odataVersion": "2.0"
+                }
             }
         },
         "sourceTemplate": {
@@ -137,6 +146,11 @@
             "@i18n": {
                 "type": "sap.ui.model.resource.ResourceModel",
                 "uri": "i18n/i18n.properties"
+            },
+            "utils": {
+              "dataSource": "utilsService",
+              "preload": true,
+              "settings": {}
             }
         },
         "routing": {

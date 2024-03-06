@@ -63,6 +63,7 @@ sap.ui.define([
 		 * @public
 		 */
 		onInit: function () {
+			var that = this;
 			// Initial message model
 			this._clearMsg();
 			// First commit
@@ -71,6 +72,22 @@ sap.ui.define([
 
 			// Get current i18n resource bundle for texts
 			this._oResourceBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle();
+
+			this.getView().setModel(new sap.ui.model.json.JSONModel({}), "Customer");
+
+			var oModelUtils = new sap.ui.model.odata.ODataModel(this.getOwnerComponent().getModel("utils").sServiceUrl, false);
+
+			oModelUtils.read("ClienteSet", {
+				success: function (oData) {
+					that.getView().getModel("Customer").setData(oData);
+				},
+				error: function (e) {
+					that._showErrorFromOData(e);
+
+					// **TESTE**
+					// that.getView().getModel("Customer").setData({ Kunnr: '100000883' });
+				}
+			});
 
 			// Initial Object
 			this._oSmartTable = this.byId("LineItemsSmartTable");
@@ -3295,7 +3312,21 @@ sap.ui.define([
 					}
 				}
 			}
-		}
+		},
+		_showErrorFromOData: function (e) {
+			try {
+				var xml = jQuery.parseXML(e.response.body);
+				var message = xml.querySelector('errordetails message');
+				var textMessage = message.textContent;
 
+			} catch (e) {
+			}
+
+			if (!textMessage) {
+				textMessage = "Não é possivel continuar com a execução. Contate o administrador do sistema.";
+			}
+
+			sap.m.MessageBox.error(textMessage);
+		}
 	});
 });
