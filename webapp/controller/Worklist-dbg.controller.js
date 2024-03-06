@@ -79,13 +79,14 @@ sap.ui.define([
 
 			oModelUtils.read("ClienteSet", {
 				success: function (oData) {
-					that.getView().getModel("Customer").setData(oData);
+					let oDataCustomer = oData.results[0];
+					
+					delete oDataCustomer["__metadata"];
+
+					that.getView().getModel("Customer").setData();
 				},
 				error: function (e) {
 					that._showErrorFromOData(e);
-
-					// **TESTE**
-					// that.getView().getModel("Customer").setData({ Kunnr: '100000883' });
 				}
 			});
 
