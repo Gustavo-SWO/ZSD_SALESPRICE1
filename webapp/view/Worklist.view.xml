@@ -56,7 +56,7 @@
 						smartVariant="pageVariantId"
 						id="smartFilterBar"
 						entitySet="C_SlsPricingConditionRecordTP"
-						persistencyKey="SmartFilterPKey"
+						persistencyKey=""
 						afterVariantLoad="onSFBAfterVariantLoad"
 						basicSearchFieldName="ConditionRecord"
 						enableBasicSearch="false"
@@ -125,11 +125,7 @@
 								key="Customer"
 								visibleInAdvancedArea="false"
 								index="6"
-							>
-								<smartFilterBar:defaultFilterValues>
-									<smartFilterBar:SelectOption low="{Customer>/Kunnr}"/>
-								</smartFilterBar:defaultFilterValues>
-							</smartFilterBar:ControlConfiguration>
+							/>
 							<!-- <smartFilterBar:ControlConfiguration id="conditionRecord" key="ConditionRecord" visibleInAdvancedArea="true" index="6"/> -->
 							<!--<smartFilterBar:ControlConfiguration id="approveRequestID" key="SalesPriceApprovalRequest" visibleInAdvancedArea="true" index="7"/>-->
 							<!--<smartFilterBar:ControlConfiguration id="processingStatus" key="ConditionProcessingStatus" visibleInAdvancedArea="true" index="8"/>-->

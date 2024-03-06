@@ -62,7 +62,7 @@ sap.ui.define([
 		 * Called when the worklist controller is instantiated.
 		 * @public
 		 */
-		onInit: function () {
+		onInit: async function () {
 			var that = this;
 			// Initial message model
 			this._clearMsg();
@@ -72,23 +72,6 @@ sap.ui.define([
 
 			// Get current i18n resource bundle for texts
 			this._oResourceBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle();
-
-			this.getView().setModel(new sap.ui.model.json.JSONModel({}), "Customer");
-
-			var oModelUtils = new sap.ui.model.odata.ODataModel(this.getOwnerComponent().getModel("utils").sServiceUrl, false);
-
-			oModelUtils.read("ClienteSet", {
-				success: function (oData) {
-					let oDataCustomer = oData.results[0];
-					
-					delete oDataCustomer["__metadata"];
-
-					that.getView().getModel("Customer").setData();
-				},
-				error: function (e) {
-					that._showErrorFromOData(e);
-				}
-			});
 
 			// Initial Object
 			this._oSmartTable = this.byId("LineItemsSmartTable");
@@ -190,6 +173,90 @@ sap.ui.define([
 			// this.byId("export").setEnabled(false);
 
 			this._handleFeature();
+
+			// this.getView().setModel(new sap.ui.model.json.JSONModel({}), "Customer");
+
+			// var oModelUtils = new sap.ui.model.odata.ODataModel(this.getOwnerComponent().getModel("utils").sServiceUrl, false);
+			// // var oResponse = await oModelUtils.read("ClienteSet");
+			// oModelUtils.read("ClienteSet", {
+			// 	success: function (oData) {
+			// 		var oDataCustomer = oData.results[0];
+
+			// 		// var oFilterCustomer = that.byId("customer");
+			// 		// oFilterCustomer.addDefaultFilterValue(new sap.ui.comp.smartfilterbar.SelectOption({ low: oDataCustomer.Kunnr }))
+			// 		delete oDataCustomer["__metadata"];
+
+			// 		var oModelCustomer = that.getView().getModel("Customer");
+
+			// 		oModelCustomer.setData(oDataCustomer);
+
+			// 		oModelCustomer.refresh();
+
+			// 		var oFilter = that._oSmartFilterBar;
+			// 		oFilter.getModel("fi1t3rM0d31").oData.Customer.ranges[0].value1 = oModelCustomer.Kunnr;
+			// 		oFilter.getModel("fi1t3rM0d31").refresh();
+			// 	},
+			// 	error: function (e) {
+			// 		that._showErrorFromOData(e);
+			// 	}
+			// });
+
+			// await this.function2();
+			this._setCustomerDefaultFilter();
+		},
+		_setCustomerDefaultFilter: function () {
+			var that = this;
+			var oModelUtils = new sap.ui.model.odata.ODataModel(this.getOwnerComponent().getModel("utils").sServiceUrl, false);
+
+			// const oPromise = await new Promise((resolve, reject) => {
+			oModelUtils.read("ClienteSet", {
+				success: function (oData) {
+					var oDataCustomer = oData.results[0];
+
+					// var oFilterCustomer = that.byId("customer");
+					// oFilterCustomer.addDefaultFilterValue(new sap.ui.comp.smartfilterbar.SelectOption({ low: oDataCustomer.Kunnr }))
+					// delete oDataCustomer["__metadata"];
+
+					// var oModelCustomer = that.getView().getModel("Customer");
+
+					// oModelCustomer.setData(oDataCustomer);
+
+					// oModelCustomer.refresh();
+
+					that._oSmartFilterBar.setFilterData({
+						ConditionType:
+						{
+							items: [],
+							ranges: [{
+								exclude: false,
+								keyField: "ConditionType",
+								operation: "EQ",
+								tokenText: "=ZP01",
+								value1: "ZP01",
+								value2: ""
+							}],
+							value: null
+						},
+						Customer:
+						{
+							items: [],
+							ranges: [{
+								exclude: false,
+								keyField: "Customer",
+								operation: "EQ",
+								tokenText: "=" + oDataCustomer.Kunnr,
+								value1: oDataCustomer.Kunnr,
+								value2: ""
+							}],
+							value: null
+						}
+					});
+				},
+				error: function (e) {
+					that._showErrorFromOData(e);
+				}
+			});
+			// });
 		},
 
 		onExit: function () {
@@ -327,6 +394,8 @@ sap.ui.define([
 			}
 
 			this._oDynamicalAreaUtil.changeDynamicalArea(undefined, undefined, true);
+
+			this._setCustomerDefaultFilter();
 		},
 
 		onSaveVariant: function (oEvent) {
